@@ -1,0 +1,31 @@
+
+.addButton:hover::after {
+ content: 'Add Task';
+ width: auto !important;
+ border-radius: 3px !important;
+ padding: 0.5rem !important;
+}
+
+.p-button.p-button-icon-only {
+    width:max-content !important;
+    min-width: 2.357rem;
+}
+.p-button.p-button-icon-only.p-button-rounded{
+    border-radius: 3px;
+    padding: 0.5rem !important;
+}
+
+.taskDone{
+    text-decoration:line-through !important;
+    background: lightgreen !important;
+}
+
+.subHeaderClass{
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+
+.datatable-style-demo .taskDone {
+    text-decoration: line-through;
+}
