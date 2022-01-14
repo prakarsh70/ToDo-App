@@ -8,6 +8,7 @@ import Modal from './Modal';
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
 import { Dialog } from 'primereact/dialog';
+import { Card } from 'primereact/card';
 import '../style/main.css'
 
 const Table = (props) => {
@@ -68,6 +69,15 @@ const Table = (props) => {
                     <Column field="dueDate" header="Due By" sortable />
                     <Column header="Action" body={action} />
                 </DataTable>)
+    }
+
+    const emptyTable = () => {
+        return(
+            <Row>
+                <Card title={`No Tasks available`} subTitle={`Please add tasks.`}>
+                </Card>
+            </Row>
+        )
     }
 
     const headerTemplate = (data) => {
@@ -161,13 +171,22 @@ const Table = (props) => {
             <Row>
                 <TabView header="ToDo List" activeIndex={index} onTabChange={e => setIndex(e.index)} >
                     <TabPanel header="All">
-                        {commonDataTable(props.pendingTaskDetails.concat(props.completedTaskDetails))}
+                        { (props.pendingTaskDetails.length>0 || props.completedTaskDetails.length>0) ?
+                            commonDataTable(props.pendingTaskDetails.concat(props.completedTaskDetails)) :
+                            emptyTable()
+                        }
                     </TabPanel>
                     <TabPanel header="Pending">
-                        {commonDataTable(props.pendingTaskDetails)}
+                        {props.pendingTaskDetails.length>0 ? 
+                            commonDataTable(props.pendingTaskDetails) :
+                            emptyTable()
+                        }
                     </TabPanel>
                     <TabPanel header="Completed">
-                        {commonDataTable(props.completedTaskDetails)}
+                        {props.completedTaskDetails.length>0 ?
+                            commonDataTable(props.completedTaskDetails) :
+                            emptyTable()
+                        }
                     </TabPanel>
                 </TabView>
             </Row>

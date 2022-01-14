@@ -17,7 +17,7 @@
 
 .taskDone{
     text-decoration:line-through !important;
-    background: lightgreen !important;
+    background: rgb(186, 229, 186) !important;
 }
 
 .subHeaderClass{
