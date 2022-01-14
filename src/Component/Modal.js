@@ -48,7 +48,7 @@ function Modal(props) {
     if (props.modalFor === "View") {
       setDisable(true);
     }
-  }, [props]);
+  }, [props, taskDetails, setTaskDetails]);
 
   const onHide = () => {
     props.toggle();
