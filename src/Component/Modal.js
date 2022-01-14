@@ -34,7 +34,6 @@ function Modal(props) {
   const [disable, setDisable] = useState(false);
 
   useEffect(() => {
-    console.log("props.selectedData", props.selectedData);
     if (props.modalFor === "Edit" || props.modalFor === "View") {
       const task = { ...taskDetails };
       task["id"] = props.selectedData.id;
@@ -44,13 +43,12 @@ function Modal(props) {
       task["desciption"] = props.selectedData.desciption;
       task["currentState"] = props.selectedData.currentState;
       task["createdOn"] = props.selectedData.createdOn;
-      console.log("task", props.selectedData);
       setTaskDetails(task);
     }
     if (props.modalFor === "View") {
       setDisable(true);
     }
-  }, []);
+  }, [props]);
 
   const onHide = () => {
     props.toggle();
@@ -60,7 +58,6 @@ function Modal(props) {
     if (onValidate()) {
       const taskD = { ...taskDetails };
       taskD["dueDate"] = convertToYYYYMMDD(taskD["dueDate"]);
-      console.log("inside add task modal", props.modalFor);
       props.onSave(taskD, props.modalFor);
       onHide();
     }
